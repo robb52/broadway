@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <div class="navbar-brand" href="#">
+      <%= link_to "Broadway", root_path %>
+    </div>
+
+    <div class="nav navbar"> 
+      <% if user_signed_in? %>
+       <%= link_to "Add Play", new_play_path %>
+      <% end %>
+    </div>  
+
+    <div class="nav navbar ml-auto">
+      <%= link_to "Sign Up", new_user_registration_path %>
+    </div>
+
+    <div class="nav-signin">
+      <% if user_signed_in? %>
+       <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+       <% else %>
+        <%= link_to "Log In", new_user_session_path %>
+      <% end %> 
+    </div>    
+    
+</nav>
