@@ -4,6 +4,20 @@
       <%= link_to "Broadway", root_path %>
     </div>
 
+      <div class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Sort
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <% Category.all.each do |category| %>
+            <li class="dropdown list"><% 'active' if params[:category] == category.name %>
+              <%= link_to category.name, plays_path(category: category.name) %>
+            </li>
+          <% end %>
+        </div>
+      </div>
+      
+
     <div class="nav navbar"> 
       <% if user_signed_in? %>
        <%= link_to "Add Play", new_play_path %>
